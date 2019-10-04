@@ -1,0 +1,21 @@
+---
+kind: pipeline
+name: build-linux-amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+
+steps:
+- name: publish
+  image: plugins/docker
+  settings:
+    dockerfile: Dockerfile
+    tags:
+    - latest
+    password:
+      from_secret: docker_pass
+    repo: simonfuhrer/drone-terraform
+    username:
+      from_secret: docker_user
